@@ -92,5 +92,100 @@ namespace PersonalExpenses.API.Controllers
             // Return DTO back to client. XXX
             return Ok(categoryDto);
         }
+
+        // POST to create new Category
+        // POST: https://localhost:portnumber/api/categories
+        [HttpPost]
+        public IActionResult Create([FromBody] AddCategoryRequestDto addCategoryRequestDto)
+        {
+            // Map or convert DTO to Domain Model
+            var categoryDomainModel = new Category
+            {
+                Abbr = addCategoryRequestDto.Abbr,
+                Name = addCategoryRequestDto.Name,
+                CategoyImageUrl = addCategoryRequestDto.CategoyImageUrl
+            };
+
+            // Use Domain Model to create Category
+            dbContext.Categories.Add(categoryDomainModel);
+            dbContext.SaveChanges();
+
+            // Map or convert Domain Model to DTO
+            var categoryDto = new CategoryDto
+            {
+                Id = categoryDomainModel.Id,
+                Abbr = categoryDomainModel.Abbr,
+                Name = categoryDomainModel.Name,
+                CategoyImageUrl = categoryDomainModel.CategoyImageUrl
+            };
+
+            return CreatedAtAction(nameof(GetById), new { id = categoryDto.Id }, categoryDto);
+
+        }
+
+        // UPDATE Category
+        // PUT: https://localhost:portnumber/api/categies/{id}
+        [HttpPut]
+        [Route("{id=Guid}")]
+        public IActionResult Update([FromRoute] Guid id, [FromBody] UpdateCategoryRequestDto updateCategoryRequestDto)
+        {
+            // Check if category exists
+            var categoryDomainModel = dbContext.Categories.FirstOrDefault(x => x.Id == id);
+
+            if (categoryDomainModel == null)
+            {
+                return NotFound();
+            }
+
+            // Map DTO to Domain Model
+            categoryDomainModel.Abbr = updateCategoryRequestDto.Abbr;
+            categoryDomainModel.Name = updateCategoryRequestDto.Name;
+            categoryDomainModel.CategoyImageUrl = updateCategoryRequestDto.CategoyImageUrl;
+
+            dbContext.SaveChanges();
+
+            // Convert Domain Model to DTO
+            var categoryDto = new CategoryDto
+            {
+                Id = categoryDomainModel.Id,
+                Abbr = categoryDomainModel.Abbr,
+                Name = categoryDomainModel.Name,
+                CategoyImageUrl = categoryDomainModel.CategoyImageUrl
+            };
+
+            return Ok(categoryDto);
+
+        }
+
+        // DELETE a Category
+        // DELETE: https://localhost:portnumber/api/categories/{id}
+        [HttpDelete]
+        [Route("{id:Guid}")]
+        public IActionResult Delete([FromRoute] Guid id)
+        {
+            // Check first if the category provided from the route {id} does exists.
+            var categoryDomainModel = dbContext.Categories.FirstOrDefault(x => x.Id == id);
+
+            if (categoryDomainModel == null)
+            {
+                return NotFound(); ;
+            }
+
+            // Delete category
+            dbContext.Categories.Remove(categoryDomainModel);
+            dbContext.SaveChanges();
+
+            // Return the deleted category back.
+            // Map Domain Model to DTO
+            var categoryDto = new CategoryDto
+            {
+                Id = categoryDomainModel.Id,
+                Abbr = categoryDomainModel.Abbr,
+                Name = categoryDomainModel.Name,
+                CategoyImageUrl = categoryDomainModel.CategoyImageUrl
+            };
+
+            return Ok(categoryDto);
+        }
     }
 }
