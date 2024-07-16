@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PersonalExpenses.API.Data;
 using PersonalExpenses.API.Models.Domain;
+using PersonalExpenses.API.Models.DTO;
 
 namespace PersonalExpenses.API.Controllers
 {
@@ -41,10 +42,27 @@ namespace PersonalExpenses.API.Controllers
             //    }
             //};
             #endregion
+            // Get data from database - Domain Models
+            var categoriesDomain = dbContext.Categories.ToList();
 
-            var categories = dbContext.Categories.ToList();
+            // Map Domain Models to DTO before sending back to the client
+            // Map this Domain Models to Data Object Transfer (DTO)
+            var categoriesDto = new List<CategoryDto>();
+            foreach (var categoryDomain in categoriesDomain) 
+            {
+                categoriesDto.Add(new CategoryDto()
+                {
+                    Id = categoryDomain.Id,
+                    Abbr = categoryDomain.Abbr,
+                    Name = categoryDomain.Name,
+                    CategoyImageUrl = categoryDomain.CategoyImageUrl
 
-            return Ok(categories);
+                });
+            }
+            
+            // Return DTO
+
+            return Ok(categoriesDto);
         }
 
         // GET SINGLE CATEGORY (Get Category By ID)
@@ -54,13 +72,25 @@ namespace PersonalExpenses.API.Controllers
         public IActionResult GetById([FromRoute] Guid id)
         {
             //var category = dbContext.Categories.Find(id);
-            var category = dbContext.Categories.FirstOrDefault(x => x.Id == id);
+            // Get Category Domain Model from Database.
+            var categoryDomain = dbContext.Categories.FirstOrDefault(x => x.Id == id);
 
-            if (category == null)
+            if (categoryDomain == null)
             {
                 return NotFound();
             }
-            return Ok(category);
+
+            // Map or convert the Category Domain Model to Category DTO.
+            var categoryDto = new CategoryDto
+            {
+                Id = categoryDomain.Id,
+                Abbr = categoryDomain.Abbr,
+                Name = categoryDomain.Name,
+                CategoyImageUrl = categoryDomain.CategoyImageUrl
+            };
+
+            // Return DTO back to client.
+            return Ok(categoryDto);
         }
     }
 }
