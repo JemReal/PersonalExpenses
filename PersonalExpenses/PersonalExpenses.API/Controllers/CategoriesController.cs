@@ -89,7 +89,7 @@ namespace PersonalExpenses.API.Controllers
                 CategoyImageUrl = categoryDomain.CategoyImageUrl
             };
 
-            // Return DTO back to client.
+            // Return DTO back to client. XXX
             return Ok(categoryDto);
         }
     }

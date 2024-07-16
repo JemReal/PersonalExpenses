@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|d:\\software engineering\\personalexpenses\\personalexpenses\\personalexpenses.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|solutionrelative:personalexpenses.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|d:\\software engineering\\personalexpenses\\personalexpenses\\personalexpenses.api\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|solutionrelative:personalexpenses.api\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|d:\\software engineering\\personalexpenses\\personalexpenses\\personalexpenses.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|solutionrelative:personalexpenses.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|d:\\software engineering\\personalexpenses\\personalexpenses\\personalexpenses.api\\models\\domain\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -30,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
@@ -58,19 +58,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "CategoriesController.cs",
               "DocumentMoniker": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\Controllers\\CategoriesController.cs",
               "RelativeDocumentMoniker": "PersonalExpenses.API\\Controllers\\CategoriesController.cs",
               "ToolTip": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\Controllers\\CategoriesController.cs",
               "RelativeToolTip": "PersonalExpenses.API\\Controllers\\CategoriesController.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAAgwC0AAAAMAAAA",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAowFsAAAAtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-16T07:24:54.759Z"
+              "WhenOpened": "2024-07-16T07:24:54.759Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\appsettings.json",
               "RelativeDocumentMoniker": "PersonalExpenses.API\\appsettings.json",
