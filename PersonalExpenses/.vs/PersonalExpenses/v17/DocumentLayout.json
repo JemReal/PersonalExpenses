@@ -3,28 +3,8 @@
   "WorkspaceRootPath": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|d:\\software engineering\\personalexpenses\\personalexpenses\\personalexpenses.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|solutionrelative:personalexpenses.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|d:\\software engineering\\personalexpenses\\personalexpenses\\personalexpenses.api\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|solutionrelative:personalexpenses.api\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|d:\\software engineering\\personalexpenses\\personalexpenses\\personalexpenses.api\\models\\dto\\updatecategoryrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|solutionrelative:personalexpenses.api\\models\\dto\\updatecategoryrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|d:\\software engineering\\personalexpenses\\personalexpenses\\personalexpenses.api\\models\\dto\\addcategoryrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|solutionrelative:personalexpenses.api\\models\\dto\\addcategoryrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|d:\\software engineering\\personalexpenses\\personalexpenses\\personalexpenses.api\\models\\dto\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|solutionrelative:personalexpenses.api\\models\\dto\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|d:\\software engineering\\personalexpenses\\personalexpenses\\personalexpenses.api\\data\\personalexpensesdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|solutionrelative:personalexpenses.api\\data\\personalexpensesdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -39,75 +19,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\appsettings.json",
-              "RelativeDocumentMoniker": "PersonalExpenses.API\\appsettings.json",
-              "ToolTip": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\appsettings.json",
-              "RelativeToolTip": "PersonalExpenses.API\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-07-17T00:00:57.606Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UpdateCategoryRequestDto.cs",
-              "DocumentMoniker": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\Models\\DTO\\UpdateCategoryRequestDto.cs",
-              "RelativeDocumentMoniker": "PersonalExpenses.API\\Models\\DTO\\UpdateCategoryRequestDto.cs",
-              "ToolTip": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\Models\\DTO\\UpdateCategoryRequestDto.cs",
-              "RelativeToolTip": "PersonalExpenses.API\\Models\\DTO\\UpdateCategoryRequestDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAApAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-16T20:13:31.143Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AddCategoryRequestDto.cs",
-              "DocumentMoniker": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\Models\\DTO\\AddCategoryRequestDto.cs",
-              "RelativeDocumentMoniker": "PersonalExpenses.API\\Models\\DTO\\AddCategoryRequestDto.cs",
-              "ToolTip": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\Models\\DTO\\AddCategoryRequestDto.cs",
-              "RelativeToolTip": "PersonalExpenses.API\\Models\\DTO\\AddCategoryRequestDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAA0AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-16T19:25:16.682Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "CategoryDto.cs",
-              "DocumentMoniker": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\Models\\DTO\\CategoryDto.cs",
-              "RelativeDocumentMoniker": "PersonalExpenses.API\\Models\\DTO\\CategoryDto.cs",
-              "ToolTip": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\Models\\DTO\\CategoryDto.cs",
-              "RelativeToolTip": "PersonalExpenses.API\\Models\\DTO\\CategoryDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-16T18:41:08.418Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "CategoriesController.cs",
               "DocumentMoniker": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\Controllers\\CategoriesController.cs",
               "RelativeDocumentMoniker": "PersonalExpenses.API\\Controllers\\CategoriesController.cs",
               "ToolTip": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\Controllers\\CategoriesController.cs",
               "RelativeToolTip": "PersonalExpenses.API\\Controllers\\CategoriesController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAKkAAAANAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-16T07:24:54.759Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "PersonalExpensesDbContext.cs",
-              "DocumentMoniker": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\Data\\PersonalExpensesDbContext.cs",
-              "RelativeDocumentMoniker": "PersonalExpenses.API\\Data\\PersonalExpensesDbContext.cs",
-              "ToolTip": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\Data\\PersonalExpensesDbContext.cs",
-              "RelativeToolTip": "PersonalExpenses.API\\Data\\PersonalExpensesDbContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-16T04:17:21.211Z"
+              "WhenOpened": "2024-07-17T00:35:27.767Z",
+              "EditorCaption": ""
             }
           ]
         }

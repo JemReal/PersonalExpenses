@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PersonalExpenses.API.Data;
 using PersonalExpenses.API.Models.Domain;
 using PersonalExpenses.API.Models.DTO;
@@ -21,7 +22,7 @@ namespace PersonalExpenses.API.Controllers
         // GET ALL CATEGORIES
         // GET: https://locahost:portNumber/api/categories
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
             #region Hard coded List to populate the HttpGet method
             //var categories = new List<Category>
@@ -43,7 +44,7 @@ namespace PersonalExpenses.API.Controllers
             //};
             #endregion
             // Get data from database - Domain Models
-            var categoriesDomain = dbContext.Categories.ToList();
+            var categoriesDomain = await dbContext.Categories.ToListAsync();
 
             // Map Domain Models to DTO before sending back to the client
             // Map this Domain Models to Data Object Transfer (DTO)
@@ -69,11 +70,11 @@ namespace PersonalExpenses.API.Controllers
         // GET: https://localhost:portnumber/api/categories/{id}
         [HttpGet]
         [Route("{id:Guid}")]
-        public IActionResult GetById([FromRoute] Guid id)
+        public async Task<IActionResult> GetById([FromRoute] Guid id)
         {
             //var category = dbContext.Categories.Find(id);
             // Get Category Domain Model from Database.
-            var categoryDomain = dbContext.Categories.FirstOrDefault(x => x.Id == id);
+            var categoryDomain = await dbContext.Categories.FirstOrDefaultAsync(x => x.Id == id);
 
             if (categoryDomain == null)
             {
@@ -96,7 +97,7 @@ namespace PersonalExpenses.API.Controllers
         // POST to create new Category
         // POST: https://localhost:portnumber/api/categories
         [HttpPost]
-        public IActionResult Create([FromBody] AddCategoryRequestDto addCategoryRequestDto)
+        public async Task<IActionResult> Create([FromBody] AddCategoryRequestDto addCategoryRequestDto)
         {
             // Map or convert DTO to Domain Model
             var categoryDomainModel = new Category
@@ -107,8 +108,8 @@ namespace PersonalExpenses.API.Controllers
             };
 
             // Use Domain Model to create Category
-            dbContext.Categories.Add(categoryDomainModel);
-            dbContext.SaveChanges();
+            await dbContext.Categories.AddAsync(categoryDomainModel);
+            await dbContext.SaveChangesAsync();
 
             // Map or convert Domain Model to DTO
             var categoryDto = new CategoryDto
@@ -127,10 +128,10 @@ namespace PersonalExpenses.API.Controllers
         // PUT: https://localhost:portnumber/api/categies/{id}
         [HttpPut]
         [Route("{id=Guid}")]
-        public IActionResult Update([FromRoute] Guid id, [FromBody] UpdateCategoryRequestDto updateCategoryRequestDto)
+        public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateCategoryRequestDto updateCategoryRequestDto)
         {
             // Check if category exists
-            var categoryDomainModel = dbContext.Categories.FirstOrDefault(x => x.Id == id);
+            var categoryDomainModel = await dbContext.Categories.FirstOrDefaultAsync(x => x.Id == id);
 
             if (categoryDomainModel == null)
             {
@@ -142,7 +143,7 @@ namespace PersonalExpenses.API.Controllers
             categoryDomainModel.Name = updateCategoryRequestDto.Name;
             categoryDomainModel.CategoyImageUrl = updateCategoryRequestDto.CategoyImageUrl;
 
-            dbContext.SaveChanges();
+            await dbContext.SaveChangesAsync();
 
             // Convert Domain Model to DTO
             var categoryDto = new CategoryDto
@@ -161,19 +162,19 @@ namespace PersonalExpenses.API.Controllers
         // DELETE: https://localhost:portnumber/api/categories/{id}
         [HttpDelete]
         [Route("{id:Guid}")]
-        public IActionResult Delete([FromRoute] Guid id)
+        public async Task<IActionResult> Delete([FromRoute] Guid id)
         {
             // Check first if the category provided from the route {id} does exists.
-            var categoryDomainModel = dbContext.Categories.FirstOrDefault(x => x.Id == id);
+            var categoryDomainModel = await dbContext.Categories.FirstOrDefaultAsync(x => x.Id == id);
 
             if (categoryDomainModel == null)
             {
-                return NotFound(); ;
+                return NotFound();
             }
 
             // Delete category
             dbContext.Categories.Remove(categoryDomainModel);
-            dbContext.SaveChanges();
+            await dbContext.SaveChangesAsync();
 
             // Return the deleted category back.
             // Map Domain Model to DTO
