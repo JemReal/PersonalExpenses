@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using PersonalExpenses.API.Data;
 using PersonalExpenses.API.Models.Domain;
 using PersonalExpenses.API.Models.DTO;
+using PersonalExpenses.API.Repositories;
 
 namespace PersonalExpenses.API.Controllers
 {
@@ -13,10 +14,12 @@ namespace PersonalExpenses.API.Controllers
     public class CategoriesController : ControllerBase
     {
         private readonly PersonalExpensesDbContext dbContext;
+        private readonly ICategoryRepository categoryRepository;
 
-        public CategoriesController(PersonalExpensesDbContext dbContext)
+        public CategoriesController(PersonalExpensesDbContext dbContext, ICategoryRepository categoryRepository)
         {
             this.dbContext = dbContext;
+            this.categoryRepository = categoryRepository;
         }
 
         // GET ALL CATEGORIES
@@ -44,7 +47,7 @@ namespace PersonalExpenses.API.Controllers
             //};
             #endregion
             // Get data from database - Domain Models
-            var categoriesDomain = await dbContext.Categories.ToListAsync();
+            var categoriesDomain = await categoryRepository.GetAllAsync();
 
             // Map Domain Models to DTO before sending back to the client
             // Map this Domain Models to Data Object Transfer (DTO)
@@ -74,7 +77,7 @@ namespace PersonalExpenses.API.Controllers
         {
             //var category = dbContext.Categories.Find(id);
             // Get Category Domain Model from Database.
-            var categoryDomain = await dbContext.Categories.FirstOrDefaultAsync(x => x.Id == id);
+            var categoryDomain = await categoryRepository.GetByIdAsync(id);
 
             if (categoryDomain == null)
             {
@@ -108,8 +111,7 @@ namespace PersonalExpenses.API.Controllers
             };
 
             // Use Domain Model to create Category
-            await dbContext.Categories.AddAsync(categoryDomainModel);
-            await dbContext.SaveChangesAsync();
+            categoryDomainModel = await categoryRepository.CreateAsync(categoryDomainModel);
 
             // Map or convert Domain Model to DTO
             var categoryDto = new CategoryDto
@@ -130,20 +132,21 @@ namespace PersonalExpenses.API.Controllers
         [Route("{id=Guid}")]
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateCategoryRequestDto updateCategoryRequestDto)
         {
+            // Map DTO to Domain Model
+            var categoryDomainModel = new Category
+            {
+                Abbr = updateCategoryRequestDto.Abbr,
+                Name = updateCategoryRequestDto.Name,
+                CategoyImageUrl = updateCategoryRequestDto.CategoyImageUrl
+            };
+
             // Check if category exists
-            var categoryDomainModel = await dbContext.Categories.FirstOrDefaultAsync(x => x.Id == id);
+            categoryDomainModel = await categoryRepository.UpdateAsync(id, categoryDomainModel);
 
             if (categoryDomainModel == null)
             {
                 return NotFound();
             }
-
-            // Map DTO to Domain Model
-            categoryDomainModel.Abbr = updateCategoryRequestDto.Abbr;
-            categoryDomainModel.Name = updateCategoryRequestDto.Name;
-            categoryDomainModel.CategoyImageUrl = updateCategoryRequestDto.CategoyImageUrl;
-
-            await dbContext.SaveChangesAsync();
 
             // Convert Domain Model to DTO
             var categoryDto = new CategoryDto
@@ -164,17 +167,12 @@ namespace PersonalExpenses.API.Controllers
         [Route("{id:Guid}")]
         public async Task<IActionResult> Delete([FromRoute] Guid id)
         {
-            // Check first if the category provided from the route {id} does exists.
-            var categoryDomainModel = await dbContext.Categories.FirstOrDefaultAsync(x => x.Id == id);
+            var categoryDomainModel = await categoryRepository.DeteleAsync(id);
 
             if (categoryDomainModel == null)
             {
                 return NotFound();
             }
-
-            // Delete category
-            dbContext.Categories.Remove(categoryDomainModel);
-            await dbContext.SaveChangesAsync();
 
             // Return the deleted category back.
             // Map Domain Model to DTO

@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PersonalExpenses.API.Data;
+using PersonalExpenses.API.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<PersonalExpensesDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("PersonalExpensesConnectionString")));
+builder.Services.AddScoped<ICategoryRepository, SQLCategoryRepository>();
+// builder.Services.AddScoped<ICategoryRepository, InMemoryCategoryRepository>(); // Smaple of changing the concrete implementation of DbContext. E.g., In Memory datasource.
 
 var app = builder.Build();
 
