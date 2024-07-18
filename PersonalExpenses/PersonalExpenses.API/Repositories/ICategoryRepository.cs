@@ -13,5 +13,6 @@ namespace PersonalExpenses.API.Repositories
         Task<Category?> UpdateAsync(Guid id, Category category);
 
         Task<Category?> DeteleAsync(Guid id);
+
     }
 }

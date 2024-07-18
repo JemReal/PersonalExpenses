@@ -3,16 +3,36 @@
   "WorkspaceRootPath": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|d:\\software engineering\\personalexpenses\\personalexpenses\\personalexpenses.api\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|solutionrelative:personalexpenses.api\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|d:\\software engineering\\personalexpenses\\personalexpenses\\personalexpenses.api\\controllers\\expensescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|solutionrelative:personalexpenses.api\\controllers\\expensescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|d:\\software engineering\\personalexpenses\\personalexpenses\\personalexpenses.api\\repositories\\sqlcategoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|solutionrelative:personalexpenses.api\\repositories\\sqlcategoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|d:\\software engineering\\personalexpenses\\personalexpenses\\personalexpenses.api\\repositories\\sqlexpenserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|solutionrelative:personalexpenses.api\\repositories\\sqlexpenserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|d:\\software engineering\\personalexpenses\\personalexpenses\\personalexpenses.api\\repositories\\icategoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|solutionrelative:personalexpenses.api\\repositories\\icategoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|d:\\software engineering\\personalexpenses\\personalexpenses\\personalexpenses.api\\repositories\\iexpenserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|solutionrelative:personalexpenses.api\\repositories\\iexpenserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|d:\\software engineering\\personalexpenses\\personalexpenses\\personalexpenses.api\\mappings\\automapperprofiles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|solutionrelative:personalexpenses.api\\mappings\\automapperprofiles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|d:\\software engineering\\personalexpenses\\personalexpenses\\personalexpenses.api\\models\\dto\\updateexpenserequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|solutionrelative:personalexpenses.api\\models\\dto\\updateexpenserequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|d:\\software engineering\\personalexpenses\\personalexpenses\\personalexpenses.api\\models\\domain\\expense.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|solutionrelative:personalexpenses.api\\models\\domain\\expense.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|d:\\software engineering\\personalexpenses\\personalexpenses\\personalexpenses.api\\models\\dto\\expensedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|solutionrelative:personalexpenses.api\\models\\dto\\expensedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|d:\\software engineering\\personalexpenses\\personalexpenses\\personalexpenses.api\\models\\dto\\frequencydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54A08608-6D45-4208-A80B-45CB3D0A2A6D}|PersonalExpenses.API\\PersonalExpenses.API.csproj|solutionrelative:personalexpenses.api\\models\\dto\\frequencydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,45 +42,106 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "SQLCategoryRepository.cs",
-              "DocumentMoniker": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\Repositories\\SQLCategoryRepository.cs",
-              "RelativeDocumentMoniker": "PersonalExpenses.API\\Repositories\\SQLCategoryRepository.cs",
-              "ToolTip": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\Repositories\\SQLCategoryRepository.cs",
-              "RelativeToolTip": "PersonalExpenses.API\\Repositories\\SQLCategoryRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwB8AAAAMAAAA",
+              "DocumentIndex": 3,
+              "Title": "AutoMapperProfiles.cs",
+              "DocumentMoniker": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\Mappings\\AutoMapperProfiles.cs",
+              "RelativeDocumentMoniker": "PersonalExpenses.API\\Mappings\\AutoMapperProfiles.cs",
+              "ToolTip": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\Mappings\\AutoMapperProfiles.cs",
+              "RelativeToolTip": "PersonalExpenses.API\\Mappings\\AutoMapperProfiles.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAA+AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-17T03:42:54.048Z",
+              "WhenOpened": "2024-07-18T05:35:28.797Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Expense.cs",
+              "DocumentMoniker": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\Models\\Domain\\Expense.cs",
+              "RelativeDocumentMoniker": "PersonalExpenses.API\\Models\\Domain\\Expense.cs",
+              "ToolTip": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\Models\\Domain\\Expense.cs",
+              "RelativeToolTip": "PersonalExpenses.API\\Models\\Domain\\Expense.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-18T05:10:58.112Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UpdateExpenseRequestDto.cs",
+              "DocumentMoniker": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\Models\\DTO\\UpdateExpenseRequestDto.cs",
+              "RelativeDocumentMoniker": "PersonalExpenses.API\\Models\\DTO\\UpdateExpenseRequestDto.cs",
+              "ToolTip": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\Models\\DTO\\UpdateExpenseRequestDto.cs",
+              "RelativeToolTip": "PersonalExpenses.API\\Models\\DTO\\UpdateExpenseRequestDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-18T05:10:42.952Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SQLExpenseRepository.cs",
+              "DocumentMoniker": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\Repositories\\SQLExpenseRepository.cs",
+              "RelativeDocumentMoniker": "PersonalExpenses.API\\Repositories\\SQLExpenseRepository.cs",
+              "ToolTip": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\Repositories\\SQLExpenseRepository.cs",
+              "RelativeToolTip": "PersonalExpenses.API\\Repositories\\SQLExpenseRepository.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAACEAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-18T05:06:48.151Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "ICategoryRepository.cs",
-              "DocumentMoniker": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\Repositories\\ICategoryRepository.cs",
-              "RelativeDocumentMoniker": "PersonalExpenses.API\\Repositories\\ICategoryRepository.cs",
-              "ToolTip": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\Repositories\\ICategoryRepository.cs",
-              "RelativeToolTip": "PersonalExpenses.API\\Repositories\\ICategoryRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAYAAAA",
+              "Title": "IExpenseRepository.cs",
+              "DocumentMoniker": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\Repositories\\IExpenseRepository.cs",
+              "RelativeDocumentMoniker": "PersonalExpenses.API\\Repositories\\IExpenseRepository.cs",
+              "ToolTip": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\Repositories\\IExpenseRepository.cs",
+              "RelativeToolTip": "PersonalExpenses.API\\Repositories\\IExpenseRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-17T03:37:16.959Z",
+              "WhenOpened": "2024-07-18T05:02:31.317Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CategoriesController.cs",
-              "DocumentMoniker": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\Controllers\\CategoriesController.cs",
-              "RelativeDocumentMoniker": "PersonalExpenses.API\\Controllers\\CategoriesController.cs",
-              "ToolTip": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\Controllers\\CategoriesController.cs",
-              "RelativeToolTip": "PersonalExpenses.API\\Controllers\\CategoriesController.cs",
-              "ViewState": "AQIAAGMAAAAAAAAAAAAwwLEAAAAmAAAA",
+              "DocumentIndex": 7,
+              "Title": "FrequencyDto.cs",
+              "DocumentMoniker": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\Models\\DTO\\FrequencyDto.cs",
+              "RelativeDocumentMoniker": "PersonalExpenses.API\\Models\\DTO\\FrequencyDto.cs",
+              "ToolTip": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\Models\\DTO\\FrequencyDto.cs",
+              "RelativeToolTip": "PersonalExpenses.API\\Models\\DTO\\FrequencyDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-17T00:35:27.767Z",
+              "WhenOpened": "2024-07-18T04:55:17.033Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ExpenseDto.cs",
+              "DocumentMoniker": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\Models\\DTO\\ExpenseDto.cs",
+              "RelativeDocumentMoniker": "PersonalExpenses.API\\Models\\DTO\\ExpenseDto.cs",
+              "ToolTip": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\Models\\DTO\\ExpenseDto.cs",
+              "RelativeToolTip": "PersonalExpenses.API\\Models\\DTO\\ExpenseDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwBAAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-18T04:53:54.882Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ExpensesController.cs",
+              "DocumentMoniker": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\Controllers\\ExpensesController.cs",
+              "RelativeDocumentMoniker": "PersonalExpenses.API\\Controllers\\ExpensesController.cs",
+              "ToolTip": "D:\\Software Engineering\\PersonalExpenses\\PersonalExpenses\\PersonalExpenses.API\\Controllers\\ExpensesController.cs",
+              "RelativeToolTip": "PersonalExpenses.API\\Controllers\\ExpensesController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFkAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-17T23:50:19.43Z",
               "EditorCaption": ""
             }
           ]

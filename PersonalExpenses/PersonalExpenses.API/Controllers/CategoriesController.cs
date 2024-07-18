@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PersonalExpenses.API.Data;
@@ -15,11 +16,13 @@ namespace PersonalExpenses.API.Controllers
     {
         private readonly PersonalExpensesDbContext dbContext;
         private readonly ICategoryRepository categoryRepository;
+        private readonly IMapper mapper;
 
-        public CategoriesController(PersonalExpensesDbContext dbContext, ICategoryRepository categoryRepository)
+        public CategoriesController(PersonalExpensesDbContext dbContext, ICategoryRepository categoryRepository, IMapper mapper)
         {
             this.dbContext = dbContext;
             this.categoryRepository = categoryRepository;
+            this.mapper = mapper;
         }
 
         // GET ALL CATEGORIES
@@ -27,46 +30,11 @@ namespace PersonalExpenses.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            #region Hard coded List to populate the HttpGet method
-            //var categories = new List<Category>
-            //{
-            //    new Category
-            //    {
-            //        Id = Guid.NewGuid(),
-            //        Name = "Utilities",
-            //        Abbr = "UTIL",
-            //        CategoyImageUrl = "https://images.pexels.com/photos/22690739/pexels-photo-22690739/free-photo-of-cityscape-of-auckland-viewed-from-the-one-tree-hill.jpeg"
-            //    },
-            //    new Category
-            //    {
-            //        Id = Guid.NewGuid(),
-            //        Name = "Transportation",
-            //        Abbr = "TRANSP",
-            //        CategoyImageUrl = "https://images.pexels.com/photos/4350631/pexels-photo-4350631.jpeg"
-            //    }
-            //};
-            #endregion
             // Get data from database - Domain Models
             var categoriesDomain = await categoryRepository.GetAllAsync();
 
-            // Map Domain Models to DTO before sending back to the client
-            // Map this Domain Models to Data Object Transfer (DTO)
-            var categoriesDto = new List<CategoryDto>();
-            foreach (var categoryDomain in categoriesDomain) 
-            {
-                categoriesDto.Add(new CategoryDto()
-                {
-                    Id = categoryDomain.Id,
-                    Abbr = categoryDomain.Abbr,
-                    Name = categoryDomain.Name,
-                    CategoyImageUrl = categoryDomain.CategoyImageUrl
-
-                });
-            }
-            
             // Return DTO
-
-            return Ok(categoriesDto);
+            return Ok(mapper.Map<List<CategoryDto>>(categoriesDomain));
         }
 
         // GET SINGLE CATEGORY (Get Category By ID)
@@ -84,17 +52,8 @@ namespace PersonalExpenses.API.Controllers
                 return NotFound();
             }
 
-            // Map or convert the Category Domain Model to Category DTO.
-            var categoryDto = new CategoryDto
-            {
-                Id = categoryDomain.Id,
-                Abbr = categoryDomain.Abbr,
-                Name = categoryDomain.Name,
-                CategoyImageUrl = categoryDomain.CategoyImageUrl
-            };
-
-            // Return DTO back to client. XXX
-            return Ok(categoryDto);
+            // Return DTO back to client.
+            return Ok(mapper.Map<CategoryDto>(categoryDomain));
         }
 
         // POST to create new Category
@@ -103,24 +62,13 @@ namespace PersonalExpenses.API.Controllers
         public async Task<IActionResult> Create([FromBody] AddCategoryRequestDto addCategoryRequestDto)
         {
             // Map or convert DTO to Domain Model
-            var categoryDomainModel = new Category
-            {
-                Abbr = addCategoryRequestDto.Abbr,
-                Name = addCategoryRequestDto.Name,
-                CategoyImageUrl = addCategoryRequestDto.CategoyImageUrl
-            };
+            var categoryDomainModel = mapper.Map<Category>(addCategoryRequestDto);
 
             // Use Domain Model to create Category
             categoryDomainModel = await categoryRepository.CreateAsync(categoryDomainModel);
 
             // Map or convert Domain Model to DTO
-            var categoryDto = new CategoryDto
-            {
-                Id = categoryDomainModel.Id,
-                Abbr = categoryDomainModel.Abbr,
-                Name = categoryDomainModel.Name,
-                CategoyImageUrl = categoryDomainModel.CategoyImageUrl
-            };
+            var categoryDto = mapper.Map<CategoryDto>(categoryDomainModel);
 
             return CreatedAtAction(nameof(GetById), new { id = categoryDto.Id }, categoryDto);
 
@@ -133,12 +81,7 @@ namespace PersonalExpenses.API.Controllers
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateCategoryRequestDto updateCategoryRequestDto)
         {
             // Map DTO to Domain Model
-            var categoryDomainModel = new Category
-            {
-                Abbr = updateCategoryRequestDto.Abbr,
-                Name = updateCategoryRequestDto.Name,
-                CategoyImageUrl = updateCategoryRequestDto.CategoyImageUrl
-            };
+            var categoryDomainModel = mapper.Map<Category>(updateCategoryRequestDto);
 
             // Check if category exists
             categoryDomainModel = await categoryRepository.UpdateAsync(id, categoryDomainModel);
@@ -148,16 +91,7 @@ namespace PersonalExpenses.API.Controllers
                 return NotFound();
             }
 
-            // Convert Domain Model to DTO
-            var categoryDto = new CategoryDto
-            {
-                Id = categoryDomainModel.Id,
-                Abbr = categoryDomainModel.Abbr,
-                Name = categoryDomainModel.Name,
-                CategoyImageUrl = categoryDomainModel.CategoyImageUrl
-            };
-
-            return Ok(categoryDto);
+            return Ok(mapper.Map<CategoryDto>(categoryDomainModel));
 
         }
 
@@ -174,17 +108,7 @@ namespace PersonalExpenses.API.Controllers
                 return NotFound();
             }
 
-            // Return the deleted category back.
-            // Map Domain Model to DTO
-            var categoryDto = new CategoryDto
-            {
-                Id = categoryDomainModel.Id,
-                Abbr = categoryDomainModel.Abbr,
-                Name = categoryDomainModel.Name,
-                CategoyImageUrl = categoryDomainModel.CategoyImageUrl
-            };
-
-            return Ok(categoryDto);
+            return Ok(mapper.Map<CategoryDto>(categoryDomainModel));
         }
     }
 }
