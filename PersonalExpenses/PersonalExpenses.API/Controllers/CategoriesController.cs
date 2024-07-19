@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using PersonalExpenses.API.CustomActionFilters;
 using PersonalExpenses.API.Data;
 using PersonalExpenses.API.Models.Domain;
 using PersonalExpenses.API.Models.DTO;
@@ -59,52 +60,44 @@ namespace PersonalExpenses.API.Controllers
         // POST to create new Category
         // POST: https://localhost:portnumber/api/categories
         [HttpPost]
+        [ValidateModel]
         public async Task<IActionResult> Create([FromBody] AddCategoryRequestDto addCategoryRequestDto)
         {
-            if(ModelState.IsValid)
-            {
-                // Map or convert DTO to Domain Model
-                var categoryDomainModel = mapper.Map<Category>(addCategoryRequestDto);
+            
+            // Map or convert DTO to Domain Model
+            var categoryDomainModel = mapper.Map<Category>(addCategoryRequestDto);
 
-                // Use Domain Model to create Category
-                categoryDomainModel = await categoryRepository.CreateAsync(categoryDomainModel);
+            // Use Domain Model to create Category
+            categoryDomainModel = await categoryRepository.CreateAsync(categoryDomainModel);
 
-                // Map or convert Domain Model to DTO
-                var categoryDto = mapper.Map<CategoryDto>(categoryDomainModel);
+            // Map or convert Domain Model to DTO
+            var categoryDto = mapper.Map<CategoryDto>(categoryDomainModel);
 
-                return CreatedAtAction(nameof(GetById), new { id = categoryDto.Id }, categoryDto);
-            }
-            else
-            {
-                return BadRequest(ModelState);
-            }
+            return CreatedAtAction(nameof(GetById), new { id = categoryDto.Id }, categoryDto);
+         
         }
 
         // UPDATE Category
         // PUT: https://localhost:portnumber/api/categies/{id}
         [HttpPut]
         [Route("{id=Guid}")]
+        [ValidateModel]
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateCategoryRequestDto updateCategoryRequestDto)
         {
-            if (ModelState.IsValid)
+            
+            // Map DTO to Domain Model
+            var categoryDomainModel = mapper.Map<Category>(updateCategoryRequestDto);
+
+            // Check if category exists
+            categoryDomainModel = await categoryRepository.UpdateAsync(id, categoryDomainModel);
+
+            if (categoryDomainModel == null)
             {
-                // Map DTO to Domain Model
-                var categoryDomainModel = mapper.Map<Category>(updateCategoryRequestDto);
-
-                // Check if category exists
-                categoryDomainModel = await categoryRepository.UpdateAsync(id, categoryDomainModel);
-
-                if (categoryDomainModel == null)
-                {
-                    return NotFound();
-                }
-
-                return Ok(mapper.Map<CategoryDto>(categoryDomainModel));
+                return NotFound();
             }
-            else
-            {
-                return BadRequest(ModelState);
-            }
+
+            return Ok(mapper.Map<CategoryDto>(categoryDomainModel));
+            
         }
 
         // DELETE a Category

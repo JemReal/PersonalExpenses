@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PersonalExpenses.API.CustomActionFilters;
 using PersonalExpenses.API.Models.Domain;
 using PersonalExpenses.API.Models.DTO;
 using PersonalExpenses.API.Repositories;
@@ -24,25 +25,18 @@ namespace PersonalExpenses.API.Controllers
         // CREATE Expense
         // POST: https://locahost:portnumber/api/expenses
         [HttpPost]
+        [ValidateModel]
         public async Task<IActionResult> Create([FromBody] AddExpenseRequestDto addExpenseRequestDto)
         {
-            if (ModelState.IsValid)
-            {
-                // Map DTO to Domain Model (from AddExpenseRequestDto to Expense Domain Model)
-                var expenseDomainModel = mapper.Map<Expense>(addExpenseRequestDto);
-
-                await expenseRepository.CreateAsync(expenseDomainModel);
-
-                // Map Domain Model to DTO
-
-                return Ok(mapper.Map<ExpenseDto>(expenseDomainModel));
-            }
-            else
-            {
-                return BadRequest(ModelState);
-            }
-
             
+            // Map DTO to Domain Model (from AddExpenseRequestDto to Expense Domain Model)
+            var expenseDomainModel = mapper.Map<Expense>(addExpenseRequestDto);
+
+            await expenseRepository.CreateAsync(expenseDomainModel);
+
+            // Map Domain Model to DTO
+
+            return Ok(mapper.Map<ExpenseDto>(expenseDomainModel));            
         }
 
         // GET Expenses
@@ -77,28 +71,21 @@ namespace PersonalExpenses.API.Controllers
         // PUT: https://localhost:portnumber/api/expenses/{id]
         [HttpPut]
         [Route("{id:Guid}")]
+        [ValidateModel]
         public async Task<IActionResult> Update([FromRoute] Guid id, UpdateExpenseRequestDto updateExpenseRequestDto)
-        {
-            if (ModelState.IsValid)
+        {            
+            // Map DTO to Domain Model
+            var expenseDomainModel = mapper.Map<Expense>(updateExpenseRequestDto);
+
+            expenseDomainModel = await expenseRepository.UpdateAsync(id, expenseDomainModel);
+
+            if (expenseDomainModel == null)
             {
-                // Map DTO to Domain Model
-                var expenseDomainModel = mapper.Map<Expense>(updateExpenseRequestDto);
-
-                expenseDomainModel = await expenseRepository.UpdateAsync(id, expenseDomainModel);
-
-                if (expenseDomainModel == null)
-                {
-                    return NotFound();
-                }
-
-                // Map Domain Model to DTO
-                return Ok(mapper.Map<ExpenseDto>(expenseDomainModel));
+                return NotFound();
             }
-            else
-            {
-                return BadRequest(ModelState);
-            }
-            
+
+            // Map Domain Model to DTO
+            return Ok(mapper.Map<ExpenseDto>(expenseDomainModel));            
         }
 
         // DELETE an Expense by Id
