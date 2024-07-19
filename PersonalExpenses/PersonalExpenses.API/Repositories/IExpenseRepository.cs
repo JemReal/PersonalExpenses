@@ -6,7 +6,7 @@ namespace PersonalExpenses.API.Repositories
     {
         Task<Expense> CreateAsync(Expense expense);
 
-        Task<List<Expense>> GetAllAsync();
+        Task<List<Expense>> GetAllAsync(string? filterOn = null, string? filterQuery = null, string? sortBy = null, bool isAscending = true, int pageNumber = 1, int pageSize = 10);
 
         Task<Expense?> GetByIdAsync(Guid id);
 

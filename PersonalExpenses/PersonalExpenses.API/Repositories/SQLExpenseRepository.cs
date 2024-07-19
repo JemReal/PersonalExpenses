@@ -36,9 +36,45 @@ namespace PersonalExpenses.API.Repositories
             return existingExpense;
         }
 
-        public async Task<List<Expense>> GetAllAsync()
+        public async Task<List<Expense>> GetAllAsync(string? filterOn = null, string? filterQuery = null, string? sortBy = null, bool isAscending = true, int pageNumber = 1, int pageSize = 10)
         {
-            return await dbContext.Expenses.Include("Frequency").Include("Category").ToListAsync();
+            var expenses = dbContext.Expenses.Include("Frequency").Include("Category").AsQueryable();
+
+            // Filtering
+            if (string.IsNullOrWhiteSpace(filterOn) == false && string.IsNullOrWhiteSpace(filterQuery) == false )
+            {
+                if (filterOn.Equals("Name", StringComparison.OrdinalIgnoreCase))
+                {
+                    expenses = expenses.Where(x => x.Name.Contains(filterQuery));
+                }
+            }
+
+            // Sorting
+            if (string.IsNullOrWhiteSpace(sortBy) == false)
+            {
+                if (sortBy.Equals("Name", StringComparison.OrdinalIgnoreCase))
+                {
+                    expenses = isAscending ? expenses.OrderBy(x => x.Name) : expenses.OrderByDescending(x => x.Name);
+                }
+                else if (sortBy.Equals("Quantity", StringComparison.OrdinalIgnoreCase))
+                {
+                    expenses = isAscending ? expenses.OrderBy(x => x.Quantity) : expenses.OrderByDescending(x => x.Quantity);
+                }
+            }
+
+            // Pagination
+            var skipResults = (pageNumber - 1) * pageSize;
+
+
+            return await expenses.Skip(skipResults).Take(pageSize).ToListAsync();
+
+            // w/out filter, sorting, and pagination
+            // return await dbContext.Expenses.Include("Frequency").Include("Category").ToListAsync();
+        }
+
+        public Task<List<Expense>> GetAllAsync(string? filterOn = null, string? filterQuery = null, string? sortBy = null, bool? isAscending = true)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<Expense?> GetByIdAsync(Guid id)
