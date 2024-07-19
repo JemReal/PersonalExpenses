@@ -26,14 +26,23 @@ namespace PersonalExpenses.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] AddExpenseRequestDto addExpenseRequestDto)
         {
-            // Map DTO to Domain Model (from AddExpenseRequestDto to Expense Domain Model)
-            var expenseDomainModel = mapper.Map<Expense>(addExpenseRequestDto);
+            if (ModelState.IsValid)
+            {
+                // Map DTO to Domain Model (from AddExpenseRequestDto to Expense Domain Model)
+                var expenseDomainModel = mapper.Map<Expense>(addExpenseRequestDto);
 
-            await expenseRepository.CreateAsync(expenseDomainModel);
+                await expenseRepository.CreateAsync(expenseDomainModel);
 
-            // Map Domain Model to DTO
+                // Map Domain Model to DTO
 
-            return Ok(mapper.Map<ExpenseDto>(expenseDomainModel));
+                return Ok(mapper.Map<ExpenseDto>(expenseDomainModel));
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
+
+            
         }
 
         // GET Expenses
@@ -70,18 +79,26 @@ namespace PersonalExpenses.API.Controllers
         [Route("{id:Guid}")]
         public async Task<IActionResult> Update([FromRoute] Guid id, UpdateExpenseRequestDto updateExpenseRequestDto)
         {
-            // Map DTO to Domain Model
-            var expenseDomainModel = mapper.Map<Expense>(updateExpenseRequestDto);
-
-            expenseDomainModel = await expenseRepository.UpdateAsync(id, expenseDomainModel);
-
-            if (expenseDomainModel == null)
+            if (ModelState.IsValid)
             {
-                return NotFound();
-            }
+                // Map DTO to Domain Model
+                var expenseDomainModel = mapper.Map<Expense>(updateExpenseRequestDto);
 
-            // Map Domain Model to DTO
-            return Ok(mapper.Map<ExpenseDto>(expenseDomainModel));
+                expenseDomainModel = await expenseRepository.UpdateAsync(id, expenseDomainModel);
+
+                if (expenseDomainModel == null)
+                {
+                    return NotFound();
+                }
+
+                // Map Domain Model to DTO
+                return Ok(mapper.Map<ExpenseDto>(expenseDomainModel));
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
+            
         }
 
         // DELETE an Expense by Id

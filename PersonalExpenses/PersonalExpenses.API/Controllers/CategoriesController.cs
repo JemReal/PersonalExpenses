@@ -61,17 +61,23 @@ namespace PersonalExpenses.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] AddCategoryRequestDto addCategoryRequestDto)
         {
-            // Map or convert DTO to Domain Model
-            var categoryDomainModel = mapper.Map<Category>(addCategoryRequestDto);
+            if(ModelState.IsValid)
+            {
+                // Map or convert DTO to Domain Model
+                var categoryDomainModel = mapper.Map<Category>(addCategoryRequestDto);
 
-            // Use Domain Model to create Category
-            categoryDomainModel = await categoryRepository.CreateAsync(categoryDomainModel);
+                // Use Domain Model to create Category
+                categoryDomainModel = await categoryRepository.CreateAsync(categoryDomainModel);
 
-            // Map or convert Domain Model to DTO
-            var categoryDto = mapper.Map<CategoryDto>(categoryDomainModel);
+                // Map or convert Domain Model to DTO
+                var categoryDto = mapper.Map<CategoryDto>(categoryDomainModel);
 
-            return CreatedAtAction(nameof(GetById), new { id = categoryDto.Id }, categoryDto);
-
+                return CreatedAtAction(nameof(GetById), new { id = categoryDto.Id }, categoryDto);
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
         }
 
         // UPDATE Category
@@ -80,19 +86,25 @@ namespace PersonalExpenses.API.Controllers
         [Route("{id=Guid}")]
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateCategoryRequestDto updateCategoryRequestDto)
         {
-            // Map DTO to Domain Model
-            var categoryDomainModel = mapper.Map<Category>(updateCategoryRequestDto);
-
-            // Check if category exists
-            categoryDomainModel = await categoryRepository.UpdateAsync(id, categoryDomainModel);
-
-            if (categoryDomainModel == null)
+            if (ModelState.IsValid)
             {
-                return NotFound();
+                // Map DTO to Domain Model
+                var categoryDomainModel = mapper.Map<Category>(updateCategoryRequestDto);
+
+                // Check if category exists
+                categoryDomainModel = await categoryRepository.UpdateAsync(id, categoryDomainModel);
+
+                if (categoryDomainModel == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(mapper.Map<CategoryDto>(categoryDomainModel));
             }
-
-            return Ok(mapper.Map<CategoryDto>(categoryDomainModel));
-
+            else
+            {
+                return BadRequest(ModelState);
+            }
         }
 
         // DELETE a Category
