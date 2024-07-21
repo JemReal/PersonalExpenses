@@ -6,7 +6,7 @@ namespace PersonalExpenses.API.Data
     public class PersonalExpensesDbContext: DbContext
     {
 
-        public PersonalExpensesDbContext(DbContextOptions dbContextOptions): base(dbContextOptions)
+        public PersonalExpensesDbContext(DbContextOptions<PersonalExpensesDbContext> dbContextOptions): base(dbContextOptions)
         {
             
         }

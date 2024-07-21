@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -29,6 +30,7 @@ namespace PersonalExpenses.API.Controllers
         // GET ALL CATEGORIES
         // GET: https://locahost:portNumber/api/categories
         [HttpGet]
+        [Authorize(Roles = "Reader")]
         public async Task<IActionResult> GetAll()
         {
             // Get data from database - Domain Models
@@ -42,6 +44,7 @@ namespace PersonalExpenses.API.Controllers
         // GET: https://localhost:portnumber/api/categories/{id}
         [HttpGet]
         [Route("{id:Guid}")]
+        [Authorize(Roles = "Reader")]
         public async Task<IActionResult> GetById([FromRoute] Guid id)
         {
             //var category = dbContext.Categories.Find(id);
@@ -61,6 +64,7 @@ namespace PersonalExpenses.API.Controllers
         // POST: https://localhost:portnumber/api/categories
         [HttpPost]
         [ValidateModel]
+        [Authorize(Roles = "Writer")]
         public async Task<IActionResult> Create([FromBody] AddCategoryRequestDto addCategoryRequestDto)
         {
             
@@ -82,6 +86,7 @@ namespace PersonalExpenses.API.Controllers
         [HttpPut]
         [Route("{id=Guid}")]
         [ValidateModel]
+        [Authorize(Roles = "Writer")]
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateCategoryRequestDto updateCategoryRequestDto)
         {
             
@@ -104,6 +109,7 @@ namespace PersonalExpenses.API.Controllers
         // DELETE: https://localhost:portnumber/api/categories/{id}
         [HttpDelete]
         [Route("{id:Guid}")]
+        [Authorize(Roles = "Writer, Reader")]
         public async Task<IActionResult> Delete([FromRoute] Guid id)
         {
             var categoryDomainModel = await categoryRepository.DeteleAsync(id);
