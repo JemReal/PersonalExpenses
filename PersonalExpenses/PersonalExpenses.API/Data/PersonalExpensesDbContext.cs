@@ -17,6 +17,8 @@ namespace PersonalExpenses.API.Data
 
         public DbSet<Expense> Expenses { get; set; }
 
+        public DbSet<Image> Images { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
