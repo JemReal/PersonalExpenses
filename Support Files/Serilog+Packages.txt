@@ -1,0 +1,7 @@
+Serilog
+Serilog.AspNetCore
+Serilog.Sinks.Console
+
+Serilog
+Serilog.AspNetCore
+Serilog.Sinks.File

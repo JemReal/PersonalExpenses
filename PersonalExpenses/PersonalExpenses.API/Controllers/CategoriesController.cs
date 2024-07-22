@@ -8,6 +8,7 @@ using PersonalExpenses.API.Data;
 using PersonalExpenses.API.Models.Domain;
 using PersonalExpenses.API.Models.DTO;
 using PersonalExpenses.API.Repositories;
+using System.Text.Json;
 
 namespace PersonalExpenses.API.Controllers
 {
@@ -19,25 +20,45 @@ namespace PersonalExpenses.API.Controllers
         private readonly PersonalExpensesDbContext dbContext;
         private readonly ICategoryRepository categoryRepository;
         private readonly IMapper mapper;
+        private readonly ILogger<CategoriesController> logger;
 
-        public CategoriesController(PersonalExpensesDbContext dbContext, ICategoryRepository categoryRepository, IMapper mapper)
+        public CategoriesController(PersonalExpensesDbContext dbContext, 
+            ICategoryRepository categoryRepository, 
+            IMapper mapper,
+            ILogger<CategoriesController> logger)
         {
             this.dbContext = dbContext;
             this.categoryRepository = categoryRepository;
             this.mapper = mapper;
+            this.logger = logger;
         }
 
         // GET ALL CATEGORIES
         // GET: https://locahost:portNumber/api/categories
         [HttpGet]
-        [Authorize(Roles = "Reader")]
+        // [Authorize(Roles = "Reader")]
         public async Task<IActionResult> GetAll()
         {
-            // Get data from database - Domain Models
-            var categoriesDomain = await categoryRepository.GetAllAsync();
+            try
+            {
+                throw new Exception("This is a custom exception.");
 
-            // Return DTO
-            return Ok(mapper.Map<List<CategoryDto>>(categoriesDomain));
+                // Get data from database - Domain Models
+                var categoriesDomain = await categoryRepository.GetAllAsync();
+
+                // Return DTO
+
+                logger.LogInformation($"Finished GetAllRegions request with data: {JsonSerializer.Serialize(categoriesDomain)}");
+
+                return Ok(mapper.Map<List<CategoryDto>>(categoriesDomain));
+
+            }
+            catch (Exception ex)
+            {
+
+                logger.LogError(ex, ex.Message);
+                throw;
+            }            
         }
 
         // GET SINGLE CATEGORY (Get Category By ID)

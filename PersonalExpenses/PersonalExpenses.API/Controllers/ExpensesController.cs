@@ -5,6 +5,7 @@ using PersonalExpenses.API.CustomActionFilters;
 using PersonalExpenses.API.Models.Domain;
 using PersonalExpenses.API.Models.DTO;
 using PersonalExpenses.API.Repositories;
+using System.Net;
 
 namespace PersonalExpenses.API.Controllers
 {
@@ -46,11 +47,23 @@ namespace PersonalExpenses.API.Controllers
         public async Task<IActionResult> GetAll([FromQuery] string? filterOn, [FromQuery] string? filterQuery, 
             [FromQuery] string? sortBy, [FromQuery] bool? isAscending, [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
         {
+            
+            // Throw an error mimicing the exeption that maybe occured during getting the response or passing the response.
+            // throw new Exception("This was the error.");
+
             var expensesDomainModel = await expenseRepository.GetAllAsync(filterOn, filterQuery, sortBy, isAscending ?? true,
-                pageNumber, pageSize);
+                    pageNumber, pageSize);
+
+            // Create an exception.
+            // throw new Exception("This is a new exception.");
 
             // Map Domain Model to DTO
             return Ok(mapper.Map<List<ExpenseDto>>(expensesDomainModel));
+            
+            // Log this exeption.
+
+            // return Problem("Something went wrong", null, (int)HttpStatusCode.InternalServerError);
+            
         }
 
         // GET Expense By Id
